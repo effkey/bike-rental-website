@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/bike-rental-app/static/css/main.2a58ea00.css",
-    "main.js": "/bike-rental-app/static/js/main.23de3738.js",
-    "static/js/787.c6e93e2d.chunk.js": "/bike-rental-app/static/js/787.c6e93e2d.chunk.js",
-    "index.html": "/bike-rental-app/index.html",
-    "main.2a58ea00.css.map": "/bike-rental-app/static/css/main.2a58ea00.css.map",
-    "main.23de3738.js.map": "/bike-rental-app/static/js/main.23de3738.js.map",
-    "787.c6e93e2d.chunk.js.map": "/bike-rental-app/static/js/787.c6e93e2d.chunk.js.map"
+    "main.css": "/static/css/main.2a58ea00.css",
+    "main.js": "/static/js/main.aaab6d96.js",
+    "static/js/787.c6e93e2d.chunk.js": "/static/js/787.c6e93e2d.chunk.js",
+    "index.html": "/index.html",
+    "main.2a58ea00.css.map": "/static/css/main.2a58ea00.css.map",
+    "main.aaab6d96.js.map": "/static/js/main.aaab6d96.js.map",
+    "787.c6e93e2d.chunk.js.map": "/static/js/787.c6e93e2d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.2a58ea00.css",
-    "static/js/main.23de3738.js"
+    "static/js/main.aaab6d96.js"
   ]
 }
