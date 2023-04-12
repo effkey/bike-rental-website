@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import { Home } from "./pages/home/Home";
 import { Details } from "./pages/details/Details";
 import { ShoppingCartProvider } from "./context/ShoppingCartContext";
-import { FetchProvider } from "./hooks/UseFetchContext";
+import { FetchProvider } from "./data/FetchData";
 import { AddProduct } from "./pages/addProduct/AddProduct";
 
 function App() {

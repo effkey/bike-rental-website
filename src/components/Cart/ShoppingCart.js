@@ -1,10 +1,10 @@
 import { Button, Offcanvas, Stack, Overlay, Popover } from "react-bootstrap";
 import { useShoppingCart } from "../../context/ShoppingCartContext";
-import PropTypes from "prop-types";
 import { CartItem } from "./CartItem";
-import { UseFetchContext } from "../../hooks/UseFetchContext";
+import { UseFetchContext } from "../../data/FetchData";
 import { useRef, useState } from "react";
 import { DatePicker } from "../DatePicker";
+import PropTypes from "prop-types";
 
 export function ShoppingCart({ isOpen }) {
   const { closeCart, cartItems, cartQuantity, removeCart } = useShoppingCart();
@@ -12,8 +12,6 @@ export function ShoppingCart({ isOpen }) {
   const { items } = UseFetchContext();
   const [selectedStartDate, setSelectedStartDate] = useState("");
   const [selectedEndDate, setSelectedEndDate] = useState("");
-
-  // Do popupu
   const [show, setShow] = useState(false);
   const [target, setTarget] = useState(null);
   const ref = useRef(null);
@@ -25,7 +23,6 @@ export function ShoppingCart({ isOpen }) {
     setSelectedEndDate(date);
   };
 
-  // funkcja zmniejsza ilość produktów w sklepie po nacisnieciu przycisku kup
   function updateProductCount(event) {
     console.log("diff" + diffDays);
     if (diffDays === 0) {
@@ -34,7 +31,6 @@ export function ShoppingCart({ isOpen }) {
       setTarget(event.target);
     } else {
       let cartItemsIds = cartItems.map((item) => item.id);
-      // let cartItemsCount = cartItems.find((item) => item.id === cartItemsIds[0]);
       let updatedData;
       let it;
       for (let i = 0; i < Object.keys(cartItemsIds).length; i++) {
@@ -53,19 +49,17 @@ export function ShoppingCart({ isOpen }) {
           updateProduct(it.id, updatedData);
         }
       }
-      console.log(updatedData);
       setShow(!show);
       removeCart();
       closeCart();
     }
   }
 
-  // Do obliczania ile dni bedzie trwało wypożyczenie
   const startDate = new Date(selectedStartDate);
   const endDate = new Date(selectedEndDate);
   const diffTime = Math.abs(endDate - startDate);
   let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-  console.log(diffDays);
+
   if (isNaN(diffDays)) {
     diffDays = 0;
   }
@@ -88,14 +82,12 @@ export function ShoppingCart({ isOpen }) {
           {cartItems.map((item) => (
             <CartItem key={item.id} {...item} />
           ))}
-
           <div className="flex mt-4">
             <div className="inline-block mr-4">
               <label className="block font-medium text-gray-700 mb-2">
                 Wybierz date wpożyczenia:
               </label>
               <div className="mt-4">
-                {/* Komponent reużywalny */}
                 <DatePicker onChange={handleDateChangeStart}></DatePicker>
               </div>
             </div>
@@ -104,7 +96,6 @@ export function ShoppingCart({ isOpen }) {
                 Wybierz date zakończenia:
               </label>
               <div className="mt-4">
-                {/* Komponent reużywalny */}
                 <DatePicker onChange={handleDateChangeEnd}></DatePicker>
               </div>
             </div>
@@ -112,13 +103,11 @@ export function ShoppingCart({ isOpen }) {
               <label className="block font-medium text-gray-700  ml-10">
                 Ile wybranych dni:
               </label>
-
               <div className=" mt-4 ml-5">
                 <div className=" fw-bold fs-5 ml-10">{diffDays} dni</div>
               </div>
             </div>
           </div>
-
           <div className="ms-auto fw-bold fs-5">
             Suma:{" "}
             {cartItems.reduce((total, cartItem) => {

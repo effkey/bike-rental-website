@@ -67,7 +67,6 @@ export function ShoppingCartProvider({ children }) {
       return currItems.filter((item) => (item.id = 0));
     });
   }
-  console.log(cartItems);
 
   return (
     <ShoppingCartContext.Provider

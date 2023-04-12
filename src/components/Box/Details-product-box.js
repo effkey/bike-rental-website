@@ -34,7 +34,6 @@ export function DetailsProductBox(props) {
                 <th>
                   <div className="ml-20 justify-between">
                     <div className="mb-5">
-                      {/* todo routing do szczegółów */}
                       <Button variant="danger">
                         <Nav.Link to={`/`} as={NavLink}>
                           Wróć do sklepu

@@ -13,7 +13,6 @@ export function Navbar(props) {
   }
   return (
     <Navbarr
-      // sticky="top"
       className="mx-auto max-w-7xl  shadow-sm mb-3 border-1"
       style={{ background: "#eef2ff" }}
     >
@@ -23,8 +22,6 @@ export function Navbar(props) {
             {props.pageTitle}
           </Nav.Link>
         </Nav>
-        {/* ikonka koszyka  */}
-
         <Button
           onClick={openOrNot}
           className="w-12 h-12 relative"

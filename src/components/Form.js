@@ -10,7 +10,7 @@ import {
   Popover,
 } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { UseFetchContext } from "../hooks/UseFetchContext";
+import { UseFetchContext } from "../data/FetchData";
 
 export function Formularz() {
   const { type, getProductsToadd, size } = UseFetchContext();
@@ -40,18 +40,13 @@ export function Formularz() {
   const [productModelErrormessage, setProductModelErrormessage] = useState("");
   const [productPriceErrormessage, setProductPriceErrormessage] = useState("");
 
-  // Do popupu
   const [show, setShow] = useState(false);
   const [target, setTarget] = useState(null);
   const ref = useRef(null);
 
   const navigate = useNavigate();
 
-  // Walidacja w zapisywaniu - sprawdza czy wszytkie pola sa dobrze uzupelnione
-  // jak tak dodaje produkt do pliku json
-
   function addTodata(event) {
-    console.log(save());
     if (
       save() === false ||
       isTitleValid === false ||
@@ -60,22 +55,16 @@ export function Formularz() {
       isModelValid === false ||
       isPriceValid === false
     ) {
-      //  Do popu infomującego żeby uzupełnić dane
       setShow(show);
       setTarget(event.target);
       console.log("Popraw formularz");
     } else {
-      //  Do popu infomującego żeby uzupełnić dane
       setShow(!show);
-
       getProductsToadd(product);
-
-      //navigate
-      navigate("/home");
+      navigate("/");
     }
   }
 
-  // Funkcja zapisuje rowerki w stanach oraz waliduje - sprawdza czy pola nie sa puste
   function save() {
     if (
       title === "" ||
@@ -127,9 +116,7 @@ export function Formularz() {
     }
   }
 
-  // Walidacja pola tytul
   function setTitleToProduct(event) {
-    console.log(event.length);
     setTitle(event);
     if (event.length > 50) {
       setIsTitleValid(false);
@@ -143,9 +130,7 @@ export function Formularz() {
     }
   }
 
-  // Walidacja pola opis
   function setDescriptionToProduct(event) {
-    console.log(event.length);
     setDescription(event);
     if (event.length > 150) {
       setIsDescriptionValid(false);
@@ -159,7 +144,6 @@ export function Formularz() {
     }
   }
 
-  // Walidacja pola ilosc
   function setProductCountToProduct(event) {
     setProductCount(event);
     if (
@@ -174,7 +158,6 @@ export function Formularz() {
     }
   }
 
-  // Walidacja pola model
   function setModelToProduct(event) {
     setModel(event);
     if (event.length > 10) {
@@ -186,7 +169,6 @@ export function Formularz() {
     }
   }
 
-  // Walidacja pola cena
   function setPriceToProduct(event) {
     setPrice(event);
     if ((!parseFloat(event) || !parseInt(event)) && event.length !== 0) {
@@ -198,14 +180,11 @@ export function Formularz() {
     }
   }
 
-  // pole z img, kolor, wybierz typ, wybierz rozmiar nie maja walidacji
-
   return (
     <>
       <Card className="mx-auto max-w-7xl bg-white shadow-sm  mb-4 ">
         <Card.Body className="">
           <h1 className="text-2xl mb-10">Uzupełnij formularz</h1>
-
           <InputGroup
             hasValidation
             className="mb-3 p-2"
@@ -224,7 +203,6 @@ export function Formularz() {
               {titleErrormessage}
             </Form.Control.Feedback>
           </InputGroup>
-
           <InputGroup className="mb-3 p-2 " style={{ width: "800px" }}>
             {" "}
             <InputGroup.Text>Opis</InputGroup.Text>
@@ -276,7 +254,6 @@ export function Formularz() {
                 {productCountErrormessage}
               </Form.Control.Feedback>
             </InputGroup>
-
             <InputGroup className="mb-3 p-2" style={{ width: "400px" }}>
               {" "}
               <InputGroup.Text>Model</InputGroup.Text>
@@ -302,7 +279,6 @@ export function Formularz() {
                 {productPriceErrormessage}
               </Form.Control.Feedback>
             </InputGroup>
-
             <InputGroup className="mb-3 p-2" style={{ width: "400px" }}>
               {" "}
               <InputGroup.Text>Kolor</InputGroup.Text>
@@ -317,11 +293,9 @@ export function Formularz() {
             <InputGroup.Text>URL do zdjecia:</InputGroup.Text>
             <Form.Control onChange={(event) => setImage(event.target.value)} />
           </InputGroup>
-
           <Button ref={ref} className="mr-10" onClick={addTodata}>
             Dodaj
           </Button>
-
           <Button onClick={save}>Zapisz</Button>
           <Overlay
             show={!show}

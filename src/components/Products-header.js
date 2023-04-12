@@ -1,7 +1,8 @@
 import { Button, Card, Dropdown, DropdownButton, Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-import { UseFetchContext } from "../hooks/UseFetchContext";
+import { UseFetchContext } from "../data/FetchData";
 import PropTypes from "prop-types";
+
 export function ProductHeader() {
   const {
     handleSortAsc,
@@ -18,9 +19,6 @@ export function ProductHeader() {
         <Card.Body>
           <div className="flex items-center ">
             <DropdownButton variant="outline" title="Sortuj po cenie">
-              {/* todo zrobić filtorwanie po typie */}
-
-              {/* Sortowanie po cenie */}
               <Dropdown.ItemText>
                 {" "}
                 <button onClick={() => handleSortDesc(items)}>Rosnąco</button>
@@ -42,7 +40,6 @@ export function ProductHeader() {
                 </Dropdown.ItemText>
               ))}
             </DropdownButton>
-            {/* Resetowanie sortowania/filtrowania po typie */}
             <Button
               className="pl-2"
               variant="outline"

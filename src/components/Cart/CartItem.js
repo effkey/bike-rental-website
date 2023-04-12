@@ -1,8 +1,6 @@
 import { Button, Stack } from "react-bootstrap";
-
 import { useShoppingCart } from "../../context/ShoppingCartContext";
-
-import { UseFetchContext } from "../../hooks/UseFetchContext";
+import { UseFetchContext } from "../../data/FetchData";
 import PropTypes from "prop-types";
 
 export function CartItem({ id, quantity }) {
@@ -10,9 +8,7 @@ export function CartItem({ id, quantity }) {
   const { removeFromCart } = useShoppingCart();
 
   let item = useFetchForDetails(id);
-  console.log(item, "itemik");
 
-  //   console.log(item);
   return (
     <Stack direction="horizontal" gap={2} className="d-flex align-items-center">
       <img

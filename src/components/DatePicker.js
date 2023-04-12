@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 
 export function DatePicker(props) {
   const today = new Date().toISOString().substring(0, 10);
-
   const [date, setDate] = useState("");
   const [minDate] = useState(today);
   const handleDateChange = (event) => {

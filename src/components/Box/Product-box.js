@@ -1,7 +1,7 @@
 import { Button, Card, Nav, Table } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { useShoppingCart } from "../../context/ShoppingCartContext";
-import { UseFetchContext } from "../../hooks/UseFetchContext";
+import { UseFetchContext } from "../../data/FetchData";
 import { PropTypes } from "prop-types";
 import React from "react";
 
@@ -43,7 +43,6 @@ export function ProductBox(props) {
                     {props.price + " zł/dzień"}
                   </span>
                   <div className="mb-5">
-                    {/* todo routing do szczegółów */}
                     <Button variant="danger">
                       <Nav.Link to={`/details/${props.id}`} as={NavLink}>
                         Szczegóły

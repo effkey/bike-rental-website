@@ -7,7 +7,7 @@ export function UseFetchContext() {
 }
 
 export function FetchProvider({ children }) {
-  // const URL = `https://alert-skirt-hare.cyclic.app`;
+ 
   const URL = ` http://localhost:8000`;
 
   const [items, setItems] = useState([]);
@@ -41,7 +41,6 @@ export function FetchProvider({ children }) {
         return b.price - a.price;
       })
     );
-    console.log(items);
   };
 
   const handleSortDesc = (items) => {
@@ -51,7 +50,6 @@ export function FetchProvider({ children }) {
         return a.price - b.price;
       })
     );
-    console.log(items);
   };
 
   const resetData = () => {
@@ -62,23 +60,21 @@ export function FetchProvider({ children }) {
     setPage(`${URL}/product?type=${type}`);
   };
 
-  // Potrzebne do pobierania typów
   useEffect(() => {
     fetch(`${URL}/type`)
       .then((response) => response.json())
       .then((data) => setType(data))
-      .catch((error) => console.log("errrrror", error));
+      .catch((error) => console.log("error", error));
   }, [URL]);
 
   useEffect(() => {
     fetch(`${URL}/size`)
       .then((response) => response.json())
       .then((data) => setSize(data))
-      .catch((error) => console.log("errrrror", error));
+      .catch((error) => console.log("error", error));
   }, [URL]);
 
   async function getProductsToadd(Product) {
-    console.log(Product);
     const response = await fetch(`${URL}/product`, {
       method: "POST",
       body: JSON.stringify(Product),
@@ -95,7 +91,6 @@ export function FetchProvider({ children }) {
     await fetch(`${URL}/product/${id}`, {
       method: "DELETE",
     }).then((response) => {
-      console.log(response);
     });
     setItems((oldItems) => oldItems.filter((item) => item.id !== id));
   }
