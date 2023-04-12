@@ -7,7 +7,8 @@ export function UseFetchContext() {
 }
 
 export function FetchProvider({ children }) {
-  const URL = `https://expensive-loafers-pike.cyclic.app/`;
+  // const URL = `https://alert-skirt-hare.cyclic.app`;
+  const URL = ` http://localhost:8000`;
 
   const [items, setItems] = useState([]);
   const [page, setPage] = useState(`${URL}/product`);
@@ -87,7 +88,6 @@ export function FetchProvider({ children }) {
     });
 
     const newProduct = await response.json();
-    console.log(newProduct, "prosze dzialaj");
     setItems((oldItems) => [...oldItems, newProduct]);
   }
 

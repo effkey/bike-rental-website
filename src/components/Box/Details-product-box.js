@@ -27,6 +27,7 @@ export function DetailsProductBox(props) {
                     <Card.Title> {props.title}</Card.Title>
                     <Card.Text> {props.description}</Card.Text>
                     <Card.Text> Typ : {props.type} </Card.Text>
+                    <Card.Text> Color: {props.color}</Card.Text>
                     <Card.Text> Ilość: {props.productCount}</Card.Text>
                   </div>
                 </th>
@@ -35,18 +36,7 @@ export function DetailsProductBox(props) {
                     <div className="mb-5">
                       {/* todo routing do szczegółów */}
                       <Button variant="danger">
-                        <Nav.Link
-                          to={`/details/${props.id}/images`}
-                          as={NavLink}
-                        >
-                          Zobacz więcej zdjęć
-                        </Nav.Link>
-                      </Button>
-                    </div>
-                    <div className="mb-5">
-                      {/* todo routing do szczegółów */}
-                      <Button variant="danger">
-                        <Nav.Link to={`/home`} as={NavLink}>
+                        <Nav.Link to={`/`} as={NavLink}>
                           Wróć do sklepu
                         </Nav.Link>
                       </Button>
@@ -103,10 +93,11 @@ export function DetailsProductBox(props) {
 }
 
 DetailsProductBox.propTypes = {
-  id: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  productCount: PropTypes.number.isRequired,
+  id: PropTypes.number,
+  title: PropTypes.string,
+  description: PropTypes.string,
+  image: PropTypes.string,
+  type: PropTypes.string,
+  color: PropTypes.string,
+  productCount: PropTypes.number,
 };

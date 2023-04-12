@@ -10,7 +10,7 @@ export function Home() {
   console.log(items);
   return (
     <>
-      <Navbar pageTitle="Wypożyczalnia rowerów" goToPage="/home"></Navbar>
+      <Navbar pageTitle="Wypożyczalnia rowerów" goToPage="/"></Navbar>
       <ProductHeader></ProductHeader>
       {items.map((item) => (
         <React.Fragment key={item.id}>

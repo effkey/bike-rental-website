@@ -3,23 +3,24 @@ import { ProductHeader } from "../../components/Products-header";
 import { UseFetchContext } from "../../hooks/UseFetchContext";
 import { Navbar } from "../../components/Navbar";
 import { DetailsProductBox } from "../../components/Box/Details-product-box";
+import { PropTypes } from "prop-types";
 import React from "react";
 
 export function Details() {
-  // // Routing z parametrem
+ 
   const { useFetchForDetails } = UseFetchContext();
-
-  // use params()
   let { id } = useParams();
-  id = Number(id);
-
   let product = useFetchForDetails(id);
 
   return (
     <>
-      <Navbar pageTitle="Szczegóły" goToPage={`/home`}></Navbar>
+      <Navbar pageTitle="Szczegóły" goToPage={`/`}></Navbar>
       <ProductHeader></ProductHeader>
       <DetailsProductBox {...product} />
     </>
   );
 }
+
+Details.propTypes = {
+  id: PropTypes.number
+};

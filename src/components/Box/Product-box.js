@@ -83,7 +83,7 @@ export function ProductBox(props) {
                           variant="danger"
                           size="sm"
                         >
-                          Usuń w koszyku
+                          Usuń z koszyka
                         </Button>
                       </div>
                     </div>

@@ -5,7 +5,7 @@ import { ProductHeader } from "../../components/Products-header";
 export function AddProduct() {
   return (
     <>
-      <Navbar pageTitle="Dodaj produkt" goToPage={`/home`}></Navbar>
+      <Navbar pageTitle="Dodaj produkt" goToPage={`/`}></Navbar>
       <ProductHeader></ProductHeader>
       <Formularz></Formularz>
     </>
